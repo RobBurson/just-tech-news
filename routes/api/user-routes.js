@@ -56,6 +56,7 @@ router.put('/:id', (req, res) => {
 
     //if req.body hs exact key/value pairs to match the model, you can just use 'req.body' instead
     User.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
@@ -70,7 +71,7 @@ router.put('/:id', (req, res) => {
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    });
+    }); 
 });
 
 //DELETE /api/users/1
